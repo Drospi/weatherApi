@@ -1,42 +1,134 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+.main{
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #100E1D;
+  width: 100vw;
+}
+.sidebar_weather{
+  width: 350px;
+  background-color: #272a48;
+  background-image: url(../public/img/Cloud-background.png);
+  background-size: 350px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: mover 3s infinite;
+}
+@keyframes mover{
+  0%{
+    background-position: 0% ;
+  }
+  50%{
+    background-position: 100%;
+  }
+  100%{
+    background-position: 0%;
+  }
+}
+.nav_main{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav_main button{
+  background-color: #6E707A;
+  color: white;
+  margin: 1rem ;
+}
+.my_location{
+  border-radius: 50%;
+}
+.sidebar_weather img{
+  width: 200px;
+}
+.sidebar_weather h1{
+  margin: 1.5rem;
+}
+.sidebar_weather h3{
+  margin: 1.5rem;
+}
+.about{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.week{
+  width: calc(100vw - 350px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+}
+.card{
+  background-color: #1E213A;
+  height: 15%;
+  width: 10%;
   text-align: center;
+  margin: 1rem;
+  padding: 1rem;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.card img{
+  width: 80%;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.card div{
+  display: flex;
+  justify-content: space-between;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.card_high{
+  background-color: #1E213A;
+  width: 30%;
+  height: 20%;
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.highlights{
+  width: calc(100vw - 350px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+}
+@media(max-width:500px){
+  .highlights{
+    width: 100vw;
   }
-  to {
-    transform: rotate(360deg);
+  .week{
+    width: 100vw;
+  }
+  .sidebar_weather{
+    width: 100vw;
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.grade{
+  background-color: #1E213A;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 60%;
+  align-self: flex-end;
+  margin: 1rem;
+  margin-bottom: 0;
 }
-
-.card {
-  padding: 2em;
+.grade:hover{
+  background-color: white;
+  color: #100E1D;
 }
-
-.read-the-docs {
-  color: #888;
+.grades{
+  width: calc(100vw - 370px);
+  text-align: end;
+  display: flex;
 }
