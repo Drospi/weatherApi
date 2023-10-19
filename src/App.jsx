@@ -3,16 +3,6 @@ import "./App.css";
 import { Week } from "./components/Week";
 import { Sidebar } from "./components/Sidebar";
 import { Highlights } from "./components/Highlights";
-import Shower from "./assets/img/Shower.png";
-import Clear from "./assets/img/Clear.png";
-import Hail from "./assets/img/Hail.png";
-import Clouds from "./assets/img/HeavyCloud.png";
-import HeavyRain from "./assets/img/HeavyRain.png";
-import LightCloud from "./assets/img/LightCloud.png";
-import LightRain from "./assets/img/LightRain.png";
-import Sleet from "./assets/img/Sleet.png";
-import Snow from "./assets/img/Snow.png";
-import Thunderstorm from "./assets/img/Thunderstorm.png";
 import { useEffect } from "react";
 
 function App() {
@@ -44,14 +34,7 @@ function App() {
     
 
   },[city,grade])
-  const handleSuccess=(data)=>{
-    const {latitude, longitude} = data.coords;
-    setLat(latitude)
-    setLong(longitude)
-  }
-  const handleLocation = ()=>{
-    navigator.geolocation.getCurrentPosition(handleSuccess)
-  }
+
   const obtenerFecha =(partesFecha)=>{
     var fecha = new Date(partesFecha);
 
@@ -151,10 +134,12 @@ useEffect(() => {
   };
   getData()
 }, []);
+document.documentElement.style.setProperty('--percentage',weather?.list[0].main.humidity)
+console.log(weather?.list[0].weather[0].icon);
   return (
     <>
       <div className="main">
-        <Sidebar setCity={setCity} disable={disable} setDisable={setDisable}></Sidebar>
+        <Sidebar grade={grade} setCity={setCity} disable={disable} setDisable={setDisable}></Sidebar>
         <div className="sidebar_weather">
           <div className="nav_main">
             <button onClick={()=>setDisable('Sidebar')}>Search for places</button>
@@ -162,7 +147,7 @@ useEffect(() => {
               <span className="material-symbols-outlined">my_location</span>
             </button>
           </div>
-          <img src={Clouds} alt="" />
+          <img src={`../public/img/${weather?.list[0].weather[0].icon}.png`} alt="" />
           <h1>{parseInt(weather?.list[0].main.temp)}°<span className="c">{grade==''?'F':'C'}</span></h1>
           <h3>{weather?.list[0].weather[0].main}</h3>
           <div className="about">
@@ -178,16 +163,16 @@ useEffect(() => {
             <button onClick={()=>setGrade('')} className="grade">°F</button>
           </div>
           <div className="week">
-            <Week max={parseInt(tempMax1)} min={parseInt(tempMin1)} fecha='Tomorrow' img={Shower}></Week>
-            <Week max={parseInt(tempMax2)} min={parseInt(tempMin2)} fecha={fechaFormateada2} img={Shower}></Week>
-            <Week max={parseInt(tempMax3)} min={parseInt(tempMin3)} fecha={fechaFormateada3}></Week>
-            <Week max={parseInt(tempMax4)} min={parseInt(tempMin4)} fecha={fechaFormateada4}></Week>
-            <Week max={parseInt(tempMax5)} min={parseInt(tempMin5)} fecha={fechaFormateada5}></Week>
-          </div>
+            <Week max={parseInt(tempMax1)} min={parseInt(tempMin1)} fecha='Tomorrow' img={`../public/img/${weather?.list[7].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax2)} min={parseInt(tempMin2)} fecha={fechaFormateada2} img={`../public/img/${weather?.list[15].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax3)} min={parseInt(tempMin3)} fecha={fechaFormateada3}img={`../public/img/${weather?.list[23].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax4)} min={parseInt(tempMin4)} fecha={fechaFormateada4}img={`../public/img/${weather?.list[31].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax5)} min={parseInt(tempMin5)} fecha={fechaFormateada5}img={`../public/img/${weather?.list[39].weather[0].icon}.png`}></Week>
           <h2>Todays Highlights</h2>
+          </div>
           <div className="highlights">
             <Highlights title="Wind Status" num={weather?.list[0].wind.speed} m='mph'></Highlights>
-            <Highlights title="Humidity" num={weather?.list[0].main.humidity} m='%'></Highlights>
+            <Highlights title="Humidity" clase='progress_bar' num={weather?.list[0].main.humidity} m='%'></Highlights>
             <Highlights title="Visibility" num={parseInt(weather?.list[0].visibility * 0.000621371)} m='miles'></Highlights>
             <Highlights title="Air Pressure" num={weather?.list[0].main.pressure} m='mb'></Highlights>
           </div>

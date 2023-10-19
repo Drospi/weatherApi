@@ -1,13 +1,18 @@
 
 
 export const Sidebar = (e) => {
+  function handleCity(){
+    var x = document.getElementById('search').value
+    console.log(x);
+    e.setCity(x)
+  }
   return (
     <div className={e.disable}>
       <h1 onClick={()=>e.setDisable('Sidebar disable')}>x</h1>
       <div className="buscar">
       <span className="material-symbols-outlined">search</span>
       <input placeholder="search location" type="text" name="search" id="search" />
-      <button>Search</button>
+      <button onClick={()=>handleCity()}>Search</button>
       </div>
       <div className="cities">
       <button onClick={()=>e.setCity('barcelona')} className="city">
