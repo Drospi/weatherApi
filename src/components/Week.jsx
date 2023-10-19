@@ -3,11 +3,11 @@
 export const Week = (e) => {
   return (
     <div className="card">
-        <p>Tomorrow</p>
+        <p>{e.fecha}</p>
         <img src={e.img} alt="" />
         <div>
-            <p>16</p>
-            <p>11</p>
+            <p>{e.max}</p>
+            <p>{e.min}</p>
         </div>
     </div>
   )

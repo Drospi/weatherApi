@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   color: white;
+  font-family: 'Overlock SC', sans-serif;
 }
 .main{
   overflow: hidden;
@@ -14,15 +15,15 @@
 .sidebar_weather{
   width: 350px;
   background-color: #272a48;
-  background-image: url(../public/img/Cloud-background.png);
-  background-size: 350px;
+  background-image: url(./assets/img/Cloud-background.png);
+  background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: mover 3s infinite;
+  animation: mover 5s infinite ease-in-out;
 }
 @keyframes mover{
   0%{
@@ -50,12 +51,31 @@
 }
 .sidebar_weather img{
   width: 200px;
+  animation: agrandar 5s ease infinite;
+}
+@keyframes agrandar{
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.2);
+  }
+  100%{
+    transform: scale(1);
+  }
 }
 .sidebar_weather h1{
   margin: 1.5rem;
+  font-size: 5rem;
 }
 .sidebar_weather h3{
   margin: 1.5rem;
+}
+.sidebar_weather h1 span{
+  color: #616475;
+  position: relative;
+  font-size: 4rem;
+  top: 20px;
 }
 .about{
   display: flex;
@@ -72,8 +92,8 @@
 }
 .card{
   background-color: #1E213A;
-  height: 15%;
-  width: 10%;
+  height: 170px;
+  width: 110px;
   text-align: center;
   margin: 1rem;
   padding: 1rem;
@@ -113,6 +133,9 @@
   .sidebar_weather{
     width: 100vw;
   }
+  .highlights h1{
+    font-size: 2rem;
+  }
 }
 .grade{
   background-color: #1E213A;
@@ -131,4 +154,67 @@
   width: calc(100vw - 370px);
   text-align: end;
   display: flex;
+}
+.Sidebar{
+  position: absolute;
+  height: 100vh;
+  overflow: hidden;
+  width: 350px;
+  background-color: #1E213A;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  transition: left 0.5s ease;
+}
+.cities{
+  margin: 1rem;
+  width: 90%;
+  height: 600px;
+}
+.Sidebar h1{
+ align-self: flex-end;
+ cursor: pointer;
+ margin: 1rem;
+ font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.Sidebar .buscar{
+  width: 90%;
+  margin: 1rem 0;
+  background-color: #1E213A;
+  border-radius: 0;
+  border: solid #E7E7EB 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
+}
+.buscar span{
+  margin-left: 1rem;
+  color: #616475;
+}
+.buscar input{
+  background-color: #1E213A;
+  color: #616475;
+  border: none;
+  box-shadow: none;
+  height: 100%;
+}
+.buscar button{
+  background-color: #3C47E9;
+}
+.city{
+  margin: 1rem 0;
+  width: 100%;
+  background-color: #1E213A;
+  border-radius: 0;
+  border: solid #E7E7EB 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
+}
+.disable{
+  left: -350px;
 }
