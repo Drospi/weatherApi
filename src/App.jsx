@@ -25,7 +25,6 @@ function App() {
       const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=58587fb136c05c60d9eff16a7ec0dc2d${grade}`
       const res = await fetch(url);
       const data = await res.json();
-      console.log(data);
       setWeather(data)
       
     }
@@ -126,7 +125,6 @@ document.documentElement.style.setProperty('--coords',`${weather?.list[0].wind.d
 const handleViento = (d)=>{
   var direcciones = ["N","NNE", "NE", "ENE","E","ESE", "SE",'SSE', "S",'SSW', "SW",'WSW', "W",'WNW', "NW",'NNW'];
   var indice = Math.round((d % 360) / 22.5);
-  console.log(indice % 16);
   var direccion = direcciones[indice % 16];
   return direccion;
 }
