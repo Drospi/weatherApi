@@ -6,7 +6,7 @@ import { Highlights } from "./components/Highlights";
 import { useEffect } from "react";
 
 function App() {
-  const [grade, setGrade] = useState('')
+  const [grade, setGrade] = useState('&units=metric')
   const [city, setCity] = useState('lima')
   const [weather, setWeather] = useState(null)
   const [disable, setDisable] = useState('Sidebar disable')
@@ -144,7 +144,7 @@ var dir = handleViento(d)
             </button>
           </div>
           <img src={`../public/img/${weather?.list[0].weather[0].icon}.png`} alt="" />
-          <h1>{parseInt(weather?.list[0].main.temp)}°<span className="c">{grade==''?'F':'C'}</span></h1>
+          <h1>{parseInt(weather?.list[0].main.temp)}°<span className="c">{grade=='&units=imperial'?'F':'C'}</span></h1>
           <h3>{weather?.list[0].weather[0].main}</h3>
           <div className="about">
             <p>Today • {fechaFormateada}</p>
@@ -156,14 +156,14 @@ var dir = handleViento(d)
         <div>
           <div className="grades">
             <button onClick={()=>setGrade('&units=metric')} className="grade">°C</button>
-            <button onClick={()=>setGrade('')} className="grade">°F</button>
+            <button onClick={()=>setGrade('&units=imperial')} className="grade">°F</button>
           </div>
           <div className="week">
-            <Week max={parseInt(tempMax1)} min={parseInt(tempMin1)} fecha='Tomorrow' img={`../public/img/${weather?.list[7].weather[0].icon}.png`}></Week>
-            <Week max={parseInt(tempMax2)} min={parseInt(tempMin2)} fecha={fechaFormateada2} img={`../public/img/${weather?.list[15].weather[0].icon}.png`}></Week>
-            <Week max={parseInt(tempMax3)} min={parseInt(tempMin3)} fecha={fechaFormateada3}img={`../public/img/${weather?.list[23].weather[0].icon}.png`}></Week>
-            <Week max={parseInt(tempMax4)} min={parseInt(tempMin4)} fecha={fechaFormateada4}img={`../public/img/${weather?.list[31].weather[0].icon}.png`}></Week>
-            <Week max={parseInt(tempMax5)} min={parseInt(tempMin5)} fecha={fechaFormateada5}img={`../public/img/${weather?.list[39].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax1)} min={parseInt(tempMin1)} grade={grade} fecha='Tomorrow' img={`../public/img/${weather?.list[7].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax2)} min={parseInt(tempMin2)} grade={grade} fecha={fechaFormateada2} img={`../public/img/${weather?.list[15].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax3)} min={parseInt(tempMin3)} grade={grade} fecha={fechaFormateada3}img={`../public/img/${weather?.list[23].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax4)} min={parseInt(tempMin4)} grade={grade} fecha={fechaFormateada4}img={`../public/img/${weather?.list[31].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax5)} min={parseInt(tempMin5)} grade={grade} fecha={fechaFormateada5}img={`../public/img/${weather?.list[39].weather[0].icon}.png`}></Week>
           <h2>Todays Highlights</h2>
           </div>
           <div className="highlights">

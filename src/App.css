@@ -186,6 +186,10 @@
   background-color: white;
   color: #100E1D;
 }
+.grade:focus{
+  background-color: white;
+  color: #100E1D;
+}
 .grades{
   width: calc(100vw - 370px);
   align-self: end;
