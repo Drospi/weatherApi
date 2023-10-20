@@ -157,7 +157,7 @@ var dir = handleViento(d)
             <button onClick={()=>setGrade('&units=imperial')} className="grade">°F</button>
           </div>
           <div className="week"> 
-            <Week max={parseInt(tempMax1)} min={parseInt(tempMin1)} grade={grade} fecha='Tomorrow' img={`weatherApi/assets/${weather?.list[7].weather[0].icon}.png`}></Week>
+            <Week max={parseInt(tempMax1)} min={parseInt(tempMin1)} grade={grade} fecha='Tomorrow' img={`../public/img/${weather?.list[7].weather[0].icon}.png`}></Week>
             <Week max={parseInt(tempMax2)} min={parseInt(tempMin2)} grade={grade} fecha={fechaFormateada2} img={`../public/img/${weather?.list[15].weather[0].icon}.png`}></Week>
             <Week max={parseInt(tempMax3)} min={parseInt(tempMin3)} grade={grade} fecha={fechaFormateada3}img={`../public/img/${weather?.list[23].weather[0].icon}.png`}></Week>
             <Week max={parseInt(tempMax4)} min={parseInt(tempMin4)} grade={grade} fecha={fechaFormateada4}img={`../public/img/${weather?.list[31].weather[0].icon}.png`}></Week>
