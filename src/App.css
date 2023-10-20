@@ -19,7 +19,7 @@
 .sidebar_weather{
   width: 350px;
   background-color: #272a48;
-  background-image: url(../public/img/Cloud-background.png);
+  background-image: url(./img/Cloud-background.png);
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
