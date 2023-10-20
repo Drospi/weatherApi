@@ -8,7 +8,6 @@ import { useEffect } from "react";
 function App() {
   const [grade, setGrade] = useState('')
   const [city, setCity] = useState('lima')
-  const [cities, setCities] = useState(null)
   const [weather, setWeather] = useState(null)
   const [disable, setDisable] = useState('Sidebar disable')
   const [currentLocation, setCurrentLocation] = useState(null)
@@ -122,20 +121,17 @@ for(let i=15; i<=23;i++){
   }
 }
 
-
-// Este Hook te va a ejecutar la función getData cada vez que la página se renderice.
-useEffect(() => {
-  const getData = async () => {
-
-      const res = await fetch("../city.list.json");
-      const resJson = await res.json();
-      setCities(resJson);
-
-  };
-  getData()
-}, []);
 document.documentElement.style.setProperty('--percentage',weather?.list[0].main.humidity)
-console.log(weather?.list[0].weather[0].icon);
+document.documentElement.style.setProperty('--coords',`${weather?.list[0].wind.deg}deg`)
+const handleViento = (d)=>{
+  var direcciones = ["N","NNE", "NE", "ENE","E","ESE", "SE",'SSE', "S",'SSW', "SW",'WSW', "W",'WNW', "NW",'NNW'];
+  var indice = Math.round((d % 360) / 22.5);
+  console.log(indice % 16);
+  var direccion = direcciones[indice % 16];
+  return direccion;
+}
+var d = weather?.list[0].wind.deg
+var dir = handleViento(d)
   return (
     <>
       <div className="main">
@@ -171,7 +167,7 @@ console.log(weather?.list[0].weather[0].icon);
           <h2>Todays Highlights</h2>
           </div>
           <div className="highlights">
-            <Highlights title="Wind Status" num={weather?.list[0].wind.speed} m='mph'></Highlights>
+            <Highlights title="Wind Status" deg={weather?.list[0].wind.deg} dir={dir} num={weather?.list[0].wind.speed} m='mph'></Highlights>
             <Highlights title="Humidity" clase='progress_bar' num={weather?.list[0].main.humidity} m='%'></Highlights>
             <Highlights title="Visibility" num={parseInt(weather?.list[0].visibility * 0.000621371)} m='miles'></Highlights>
             <Highlights title="Air Pressure" num={weather?.list[0].main.pressure} m='mb'></Highlights>
